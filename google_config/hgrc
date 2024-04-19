@@ -1,0 +1,3 @@
+[ui]
+merge = :merge3
+editor=vim
