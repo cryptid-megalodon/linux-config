@@ -141,3 +141,52 @@ alias m='amixer sset Master toggle'
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
+
+# Terminal Colors ==============================================================
+# Using Dracula terminal color scheme here: https://draculatheme.com/gnome-terminal
+# Solarize Dir Colors
+eval `dircolors /home/megalodon/.dir_colors/dircolors`
+
+# Command prompt colors
+# Colors
+black="\[$(tput setaf 0)\]"
+red="\[$(tput setaf 1)\]"
+green="\[$(tput setaf 2)\]"
+yellow="\[$(tput setaf 3)\]"
+blue="\[$(tput setaf 4)\]"
+magenta="\[$(tput setaf 5)\]"
+cyan="\[$(tput setaf 6)\]"
+white="\[$(tput setaf 7)\]"
+
+# Title bar - "user@host: ~"
+title="\u@\h: \w"
+titlebar="\[\033]0;"$title"\007\]"
+
+# Git branch
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)\ /';
+}
+
+# Clear attributes
+clear_attributes="\[$(tput sgr0)\]"
+
+# Custom bash prompt - "➜  ~ (master) "
+export PS1="${titlebar}${green}➜  ${blue}\w ${cyan}\$(git_branch)${white}\$ ${clear_attributes}"
+# =============================================================================
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/megalodon/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/megalodon/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/megalodon/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/megalodon/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
