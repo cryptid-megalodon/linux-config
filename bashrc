@@ -69,13 +69,12 @@ EDITOR='vim'
 alias v='vim'
 
 # Keyboard
-# This command is needed to undo any prior mapping and restore the default.
-setxkbmap -option
-setxkbmap -option "ctrl:nocaps"
-# To restore capslock key default, uncomment the following command, and comment
-# out the original remapping above. Must run "setxkbmap -option" to restore
-# default mapping first.
-# setxkbmap -option "caps:capslock"
+## Swap Escape and CapsLock
+# Some combination of my keyboarda and the VScode Vim extension does not
+# like any commandline key rebinding. I found that setting first setting
+# extension.vim_escape to the CapsLock key. Then using gnome-tweaks to
+# set capslock to an additional escape key worked across both the terminal
+# and VScode.
 
 # List Dir
 alias ll='ls -alF'
